@@ -52,7 +52,6 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         registrationPage.checkResult("Student Name", "Test Testes")
                 .checkResult("Gender", "Other")
                 .checkResult("Mobile", "8909876543");
-        sleep(5000);
         registrationPage.tableResultAppear();
     }
 
