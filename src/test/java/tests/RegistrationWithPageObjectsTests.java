@@ -3,8 +3,6 @@ package tests;
 import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
