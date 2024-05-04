@@ -116,7 +116,7 @@ public class RegistrationPage {
     public RegistrationPage submit() {
         submit.click();
 
-        return null;
+        return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
