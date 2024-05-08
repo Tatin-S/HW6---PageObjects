@@ -2,38 +2,40 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import pages.RegistrationPage;
+import utils.TestData;
 
 public class RegistrationWithPageObjectsTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData data = new TestData();
 
     @Test
     void successfulRegistrationTest() {
         registrationPage.openPage()
-                .setFirstName("Test")
-                .setLastName("Testes")
-                .setEmail("test@test.com")
-                .setGender("Other")
-                .setUserNumber("8909876543")
-                .setDateOfBirth("28", "May", "2018")
-                .setSubjects("Computer Science")
-                .setHobbies("Sports")
-                .setPicture("Picture.jpg")
-                .setCurrentAddress("Street Test 1")
-                .setState("Uttar Pradesh")
-                .setCity("Lucknow")
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setEmail(data.email)
+                .setGender(data.gender)
+                .setUserNumber(data.phoneNumber)
+                .setDateOfBirth(data.BirthDay, data.BirthMonth, data.BirthYear)
+                .setSubjects(data.subject)
+                .setHobbies(data.hobby)
+                .setPicture(data.picture)
+                .setCurrentAddress(data.currentAddress)
+                .setState(data.state)
+                .setCity(data.city)
                 .submit();
 
-        registrationPage.checkResult("Student Name", "Test Testes")
-                .checkResult("Student Email", "test@test.com")
-                .checkResult("Gender", "Other")
-                .checkResult("Mobile", "8909876543")
-                .checkResult("Date of Birth", "28 May,2018")
-                .checkResult("Subjects", "Computer Science")
-                .checkResult("Hobbies", "Sport")
-                .checkResult("Picture", "Picture.jpg")
-                .checkResult("Address", "Street Test 1")
-                .checkResult("State and City", "Uttar Pradesh Lucknow");
+        registrationPage.checkResult("Student Name", data.firstName + " " + data.lastName)
+                .checkResult("Student Email", data.email)
+                .checkResult("Gender", data.gender)
+                .checkResult("Mobile", data.phoneNumber)
+                .checkResult("Date of Birth", data.BirthDay + " " + data.BirthMonth + "," + data.BirthYear)
+                .checkResult("Subjects", data.subject)
+                .checkResult("Hobbies", data.hobby)
+                .checkResult("Picture", data.picture)
+                .checkResult("Address", data.currentAddress)
+                .checkResult("State and City", data.state + " " + data.city);
 
         registrationPage.tableResultAppear();
     }
@@ -41,24 +43,24 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void successfulValidateRegistrationTest() {
         registrationPage.openPage()
-                .setFirstName("Test")
-                .setLastName("Testes")
-                .setGender("Other")
-                .setUserNumber("8909876543")
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setGender(data.gender)
+                .setUserNumber(data.phoneNumber)
                 .submit();
 
-        registrationPage.checkResult("Student Name", "Test Testes")
-                .checkResult("Gender", "Other")
-                .checkResult("Mobile", "8909876543");
+        registrationPage.checkResult("Student Name", data.firstName + " " + data.lastName)
+                .checkResult("Gender", data.gender)
+                .checkResult("Mobile", data.phoneNumber);
         registrationPage.tableResultAppear();
     }
 
     @Test
     void negativeValidateRegistrationTest() {
         registrationPage.openPage()
-                .setFirstName("Test")
-                .setLastName("Testes")
-                .setUserNumber("8909876543")
+                .setFirstName(data.firstName)
+                .setLastName(data.lastName)
+                .setUserNumber(data.phoneNumber)
                 .submit();
 
         registrationPage.tableResultHidden();
