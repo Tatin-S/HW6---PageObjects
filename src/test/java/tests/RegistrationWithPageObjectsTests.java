@@ -61,6 +61,6 @@ public class RegistrationWithPageObjectsTests extends TestBase {
                 .setUserNumber("8909876543")
                 .submit();
 
-        registrationPage.TableResultHidden();
+        registrationPage.tableResultHidden();
     }
 }

@@ -131,7 +131,7 @@ public class RegistrationPage {
                 .shouldHave(text("Thanks for submitting the form"));
     }
 
-    public void TableResultHidden() {
+    public void tableResultHidden() {
         modalContentElement.shouldBe(hidden);
     }
 }
