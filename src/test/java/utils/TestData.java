@@ -43,6 +43,7 @@ public class TestData {
             city = faker.options().option("Jaipur", "Jaiselmer");
         return city;
     }
+    
     public static String getRandomItemFromArray(String[] array) {
         int index = getRandomInt(0, array.length - 1);
 
