@@ -32,7 +32,6 @@ public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
-     //   sleep(5000);
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -135,11 +134,4 @@ public class RegistrationPage {
     public void tableResultHidden() {
         modalContentElement.shouldBe(hidden);
     }
-
-//    public RegistrationPage removeBanners() {
-//        executeJavaScript("$('#fixedban').remove()");
-//        executeJavaScript("$('footer').remove()");
-//
-//        return this;
-//    }
 }
