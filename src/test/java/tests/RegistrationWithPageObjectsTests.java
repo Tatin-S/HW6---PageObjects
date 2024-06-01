@@ -5,6 +5,7 @@ import pages.RegistrationPage;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 
+@Tag("registration")
 public class RegistrationWithPageObjectsTests extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
 
@@ -13,6 +14,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void successfulRegistrationTest() {
         step("Открыть форму регистрации", () -> {
             registrationPage.openPage();
+            registrationPage.closeBanners();
         });
         step("Заполнить все поля и нажать submit", () -> {
             registrationPage.setFirstName(data.firstName)
@@ -50,6 +52,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void successfulValidateRegistrationTest() {
         step("Открыть форму регистрации", () -> {
             registrationPage.openPage();
+            registrationPage.closeBanners();
         });
 
         step("Заполнить обязательные поля и нажать submit", () -> {
@@ -73,11 +76,11 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     void negativeValidateRegistrationTest() {
         step("Открыть форму регистрации", () -> {
             registrationPage.openPage();
+            registrationPage.closeBanners();
         });
 
         step("Заполнить обязательные поля, кроме Gender, и нажать submit", () -> {
-        registrationPage.openPage()
-                .setFirstName(data.firstName)
+        registrationPage.setFirstName(data.firstName)
                 .setLastName(data.lastName)
                 .setUserNumber(data.phoneNumber)
                 .submit();
